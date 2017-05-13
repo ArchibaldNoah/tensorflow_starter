@@ -109,7 +109,7 @@ def main(argv=None):
         tf.initialize_all_variables().run()
         
         # Iterate and train.
-        for step in xrange(num_epochs * train_size // BATCH_SIZE)
+        for step in xrange(num_epochs * train_size // BATCH_SIZE):
     
             offset = (step * BATCH_SIZE) % train_size
 
@@ -124,21 +124,21 @@ def main(argv=None):
 
         # Give very detailed output.
         if verbose:
-            print
-            print 'Weight matrix.'
-            print s.run(W)
-            print
-            print 'Bias vector.'
-            print s.run(b)
-            print
-            print "Applying model to first test instance."
+            print("")
+            print('Weight matrix.')
+            print(s.run(W))
+            print("")
+            print('Bias vector.')
+            print(s.run(b))
+            print("")
+            print ("Applying model to first test instance.")
             first = test_data[:1]
-            print "Point =", first
-            print "Wx+b = ", s.run(tf.matmul(first,W)+b)
-            print "softmax(Wx+b) = ", s.run(tf.nn.softmax(tf.matmul(first,W)+b))
-            print
+            print ("Point =", first)
+            print ("Wx+b = ", s.run(tf.matmul(first,W)+b))
+            print ("softmax(Wx+b) = ", s.run(tf.nn.softmax(tf.matmul(first,W)+b)))
+            print("")
             
-        print "Accuracy:", accuracy.eval(feed_dict={x: test_data, y_: test_labels})
+        print("Accuracy:", accuracy.eval(feed_dict={x: test_data, y_: test_labels}))
 
         if plot:
             eval_fun = lambda X: predicted_class.eval(feed_dict={x:X}); 
